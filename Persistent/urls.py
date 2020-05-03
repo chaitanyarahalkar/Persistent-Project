@@ -16,11 +16,16 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 import app.views as views
+from django.conf.urls.static import static
+from django.conf import settings
+from django.urls import path
+
 
 urlpatterns = [
 	
-	url(r'^$', views.index),
+    path('',views.index),
+	path('<int:id>/', views.index),
 	url(r'^open/', views.open),
-	url(r'^annotate/', views.annotate),
+	#url(r'^annotate/', views.annotate),
     url(r'^admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -7,45 +7,195 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </head>
-
 <body>
 
-<nav class="navbar navbar-dark navbar-expand-lg" style="background-color: rgb(0,51,0); height: 80px;">
-  <a class="navbar-brand" href="#">Persistent Project</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="container-fluid">
+<div class="row" >
+<div class="col" style="text-align: center;">
+	<div class="row">
+			<div>
+				<h1 class="display-4" style="margin-left: 0px; margin-right:0px; margin-top: 20px; width:400px; ">Lung Cancer Diagnosis</h1>
+			</div>
+			<div>
+					<p class="lead" style="margin-left: 0px; margin-right: 0px;width:400px;">Using 3D CNNs and Explainable AI</p>
+			</div>
+	</div>
+  <div class="row">
+  <div class="col">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active" style="margin-left: 435px;">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/open">Open Image</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Detect and Select</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Annotate and Segment</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Report and Export</a>
-      </li>
-    </ul>
+  	<div class="list-group list-group-flush" id="myListImg" role="tablist" style="border-color: green;margin-left:20px;margin-bottom: 20px;max-width: 200px;">
+  		<li class="list-group-item list-group-item-action " >Available Images</li>
+  <a class="list-group-item list-group-item-action active list-group-item-success" data-toggle="list" href="#img-1" role="tab">IMG#1</a>
+  <a class="list-group-item list-group-item-action list-group-item-success" data-toggle="list" href="#img-2" role="tab">IMG#2</a>
+  <a class="list-group-item list-group-item-action list-group-item-success" data-toggle="list" href="#img-3" role="tab">IMG#3</a>
+  <a class="list-group-item list-group-item-action list-group-item-success" data-toggle="list" href="#img-4" role="tab">IMG#4</a>
+  <a class="list-group-item list-group-item-action list-group-item-success" data-toggle="list" href="#img-5" role="tab">IMG#5</a>
+    		</div>  
     
+    	<button type="button" class="btn btn-outline-success" style="">Import Image</button>
   </div>
-</nav>
 
-<div class="container-fluid" style="text-align: center; margin-top: 70px">
- <br>
-  <h1 class="display-4">Lung Cancer Diagnosis System </h1>
-  <p class="lead" style="margin-top:40px; margin-left: 220px; margin-right: 220px;">Lung cancer detection made easy with the use of 3D CNNs and Explainable AI. Explore a decision-support system that is specifically designed by prioritizing the needs of radiologists.</p>
-  <p class="lead">Start by opening available DICOM images.</p>
-  <button type="button" class="btn btn-outline-success" onclick="window.location.href='/open'">Open Images</button><br><br>
-  <hr>
+  <div class="col">
+
+  	<div class="tab-content" >
+			  <div class="tab-pane active" id="img" role="tabpanel">
+					<div class="list-group list-group-flush"   style="margin-bottom: 20px;  max-width: 300px;">
+			  			<li class="list-group-item list-group-item-action " >Available Nodules</li>
+              {% for nodule in nodules %}
+					  <a class="list-group-item list-group-item-action active  list-group-item-success" href="/{{ nodule.id|add:'-1' }}/" >Nodule {{ nodule.id }}</a>
+				      {% endfor %}
+			   		</div>  
+    
+    					<button type="button" class="btn btn-outline-success" style="">Add a Nodule</button>
+			  	
+
+			  </div>
+
+	</div>
+
+ 
+  </div>
+  </div>
+
 </div>
+	<div class="col" style="text-align: center;">
+
+
+	
+
+		<img src="data:image/png;base64,{{ img }}" height="500" width="500"/>
+				
+
+		
+		<table class="table table-bordered" style="margin-top: 20px; margin-left: 20px; border-color: green; height:40px; width:350px;">
+            <tbody style="border-color: green;">
+            <tr>
+            	<td scope="row">Centroid</td>
+            	<td>X: {{ info.x }}</td>
+            	<td>Y: {{ info.y }}</td>
+            </tr>
+            <tr>
+            	<td scope="row">Slice Index</td>
+            	<td colspan="2"> {{ info.z }}</td>
+            </tr>
+            <tr>
+            	<td scope="row">Probability</td>
+            	<td colspan="2">{{ info.probability }}</td>
+            </tr>
+            <tr>
+            	<td scope="row">Malignancy score</td>
+            	<td colspan="2">{{ info.score }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+    
+		
+
+	</div>
+
+
+	
+	<div class="col">
+
+		
+            
+           
+        <div class="card" style="margin-top: 40px; margin-left:0px; margin-right: 40px;">
+                                  <div class="card-header" style="text-align: center;">Annotate</div>
+                                  <div class="card-body">
+                                      <form method = "POST" action = "/submit/">
+
+                                      <div class="form-group">
+                                        <label>Position</label><br>
+                                        
+                                        <div class="form-check form-check-inline" style="margin-right:66px;">
+                                        <input class="form-check-input" type="radio" name="leftlung" id="leftLung" {% if info.position == 'L' %} checked="checked" {% endif %}>
+                                        <label class="form-check-label" >Left lung</label>
+
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="rightlung" id="rightlung" {% if info.position == 'R' %} checked="checked" {% endif %}>
+                                        <label class="form-check-label">Right lung</label>
+                                        </div>
+                                        
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label>State</label><br>
+                                        
+                                        <div class="form-check form-check-inline col-md-6">
+                                        <input class="form-check-input" type="radio" name="solid" id="solid" {% if info.state == 'SL' %} checked="checked" {% endif %}>
+                                        <label class="form-check-label" >Solid</label>
+
+                                        </div>
+                                        <div class="form-check form-check-inline ">
+                                        <input class="form-check-input" type="radio" name="semisolid" id="semisolid" {% if info.state == 'SS' %} checked="checked" {% endif %}>
+                                        <label class="form-check-label">Semi-solid</label>
+                                        </div>
+                                        
+                                        <div class="form-check form-check-inline ">
+                                        <input class="form-check-input" type="radio" name="groundglass" id="groundglass" {% if info.state == 'GG' %} checked="checked" {% endif %}>
+                                        <label class="form-check-label" >Ground glass</label>
+                                        </div>
+
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label>Size</label><br>
+                                        
+                                        <div class="form-check form-check-inline col-md-6">
+                                        <input class="form-check-input" type="radio" name="unchanged" id="unchanged" {% if info.size == 'UC' %} checked="checked" {% endif %}>
+                                        <label class="form-check-label">Unchanged</label>
+
+                                        </div>
+                                        <div class="form-check form-check-inline col-md-4">
+                                        <input class="form-check-input" type="radio" name="increased" id="increased" {% if info.size == 'IN' %} checked="checked" {% endif %}>
+                                        <label class="form-check-label">Increased</label>
+                                        </div>
+                                        
+                                        <div class="form-check form-check-inline col-md-6">
+                                        <input class="form-check-input" type="radio" name="decreased" id="decreased" {% if info.size  == 'DC' %} checked="checked" {% endif %}>
+                                        <label class="form-check-label">Decreased</label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline col-md-4">
+                                        <input class="form-check-input" type="radio" name="new" id="new" {% if info.size == 'NW' %} checked="checked" {% endif %}>
+                                        <label class="form-check-label" >New</label>
+                                        </div>
+
+                                      </div>
+
+                                      <div class="form-group">
+                                      <label>Notes</label>
+                                      <textarea class="form-control">{{ info.notes }}</textarea>
+                                      </div>
+
+                                      <button type="submit" class="btn btn-outline-success" >Submit</button>
+                                      </form>
+
+
+                                  </div>
+                            </div>
+
+   
+
+	</div>
+
+
+
+</div>
+</div>
+
+
+
+ 
+
+
+
 
 </body>
 </html>
+
+
+		

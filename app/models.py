@@ -13,13 +13,14 @@ class Case(models.Model):
 	diagnostic_quality = models.CharField(max_length = 1, choices = QUALITY)
 	see_physician = models.BooleanField(default = False)
 	comments = models.TextField()
+	patient_id = models.CharField(max_length = 150)
 
 	class Meta:
 		verbose_name = 'Case'
 		verbose_name_plural = 'Cases'
 
 	def __str__(self):
-		return str(self.case_id)
+		return self.patient_id
 
 
 class Nodule(models.Model):

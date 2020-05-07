@@ -44,7 +44,7 @@
 
 <div class="row" >
 
-  <div class="col-3" style="text-align: center;">
+  <div class="col-3" style="text-align : center;">
 
       <div class="list-group list-group-flush" id="myListImg" role="tablist" style="display: inline-block; border-color: green; margin-top: 40px; margin-bottom: 20px; width:260px; margin-left: 40px;">
               <li class="list-group-item list-group-item-action " style="background-color: rgb(21,87,36); color: white;" >Available Nodules</li>
@@ -58,29 +58,34 @@
 
   </div>
 
-<div class="col" style="margin-left: 30px;">
+<div class="col" style="margin-left: 30px;
+display: inline-block;">
 
   <div class="row">
-      <div class="list-group list-group-horizontal align-items-center" id="myList" role="tablist">
-
-      <button class="btn btn-light list-group-item list-group-item-action active" style="margin-top: 40px;margin-right: 20px; background-color: rgb(21,87,36); color:white;" data-toggle="list" href="#detect" role="tab">Detect</button>
-        <button class="btn btn-light list-group-item list-group-item-action " style="margin-top: 40px;background-color: rgb(21,87,36); color:white;" data-toggle="list" href="#annotate" role="tab">Annotate</button>
-
+      <div class="list-group list-group-horizontal align-items-center" id="myList" role="tablist" style="margin-bottom: 20px;" >
+        
+            <button class="btn btn-light list-group-item list-group-item-action active" style="margin-top: 40px; margin-left: 300px ;margin-right: 40px; background-color: rgb(21,87,36); color:white;  " data-toggle="list" href="#detect" role="tab">Detect</button>
+         
+            <button class="btn btn-light list-group-item list-group-item-action " style="margin-top: 40px; margin-right: 0px; background-color: rgb(21,87,36); color:white; " data-toggle="list" href="#annotate" role="tab">Annotate</button>
+          
       </div>
+      
   </div>
   
   <div class="row">
+
     <div class="tab-content">
 
           <div class="row tab-pane active" id="detect" role="tabpanel">
     <div class="row" style="width:900px; margin-left: 0px;">
+     
 
     <div class="col" >
       <img style="margin-top: 20px; margin-left: 0px;" src="data:image/png;base64,{{ img }}" height="500" width="500"/>
-      <div class="card" style= "background-color: rgb(195,230,203); margin-top: 20px;">
+      <div class="card" style= "background-color: rgb(195,230,203); margin-top: 20px; margin-bottom: 60px;">
         <div class="card-header" style="background-color: rgb(21,87,36); color: white;" >Explanation
       </div>
-      <div class="card-body" style="text-align: justify;"><p>{{ explanation }}</p></div>
+      <div class="card-body" style="text-align: justify; "><p>{{ explanation }}</p></div>
       </div>
 
       

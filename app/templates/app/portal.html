@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</head>
+<body style= "background-color: rgb(242,242,242);">
+
+<!-- RGB values: dark green: rgb(21,87,36); light green: rgb(195,230,203); green : rgb(40,167,69); -->
+
+
+<nav class="navbar navbar-dark navbar-expand-lg" style="background-color: rgb(21,87,36); height: 60px;">
+  <a class="navbar-brand" href="#" style="margin-left: 40px;">Persistent Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" >
+      <li class="nav-item" style="margin-left: 450px;">
+        <a class="nav-link" href="#" style="width: 100px;">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/open" style="width: 150px;">Open Image</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="width: 150px;">Import Image</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="width: 150px;">Report and Export</a>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+
+
+
+<div class="container-fluid">
+
+
+<div class="row" >
+
+  <div class="col-3" style="text-align: center;">
+
+      <div class="list-group list-group-flush" id="myListImg" role="tablist" style="display: inline-block; border-color: green; margin-top: 40px; margin-bottom: 20px; width:260px; margin-left: 40px;">
+              <li class="list-group-item list-group-item-action " style="background-color: rgb(21,87,36); color: white;" >Available Nodules</li>
+              {% for nodule in nodules %}
+              <a class="list-group-item list-group-item-action list-group-item-success" href="/portal/{{case_id}}/{{ nodule.0 }}/" >Nodule {{ nodule.0|add:'1' }}</a>
+              {% endfor %}
+              
+      </div>  
+    <br>
+        <button type="button" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;" onclick="window.location.href='/admin/app/nodule/add/' ">Add a Nodule</button>
+
+  </div>
+
+<div class="col" style="margin-left: 30px;">
+
+  <div class="row">
+      <div class="list-group list-group-horizontal align-items-center" id="myList" role="tablist">
+
+      <button class="btn btn-light list-group-item list-group-item-action active" style="margin-top: 40px;margin-right: 20px; background-color: rgb(21,87,36); color:white;" data-toggle="list" href="#detect" role="tab">Detect</button>
+        <button class="btn btn-light list-group-item list-group-item-action " style="margin-top: 40px;background-color: rgb(21,87,36); color:white;" data-toggle="list" href="#annotate" role="tab">Annotate</button>
+
+      </div>
+  </div>
+  
+  <div class="row">
+    <div class="tab-content">
+
+          <div class="row tab-pane active" id="detect" role="tabpanel">
+    <div class="row" style="width:900px; margin-left: 0px;">
+
+    <div class="col" >
+      <img style="margin-top: 20px; margin-left: 0px;" src="data:image/png;base64,{{ img }}" height="500" width="500"/>
+      <div class="card" style= "background-color: rgb(195,230,203); margin-top: 20px;">
+        
+      <div class="card-body" style="text-align: justify;"><p class="lead" >{{ explanation }}</p></div>
+    
+    </div>
+      
+    </div>
+    <div class="col">
+            <table class="table table-bordered" style="border-color: rgb(21,87,36); margin-top: 20px; margin-right: 0px; width: 340px; text-align: center;">
+                        <tbody  >
+                        <tr >
+                          <td scope="row" style=" border-color: rgb(21,87,36); background-color: rgb(195,230,203);">Centroid</td>
+                          <td style="border-color: rgb(21,87,36);">X: {{ info.x }}</td>
+                          <td style="border-color: rgb(21,87,36);">Y: {{ info.y }}</td>
+                        </tr>
+                        <tr >
+                          <td scope="row" style="border-color: rgb(21,87,36);background-color: rgb(195,230,203);">Slice Index</td>
+                          <td colspan="2" style="border-color: rgb(21,87,36);"> {{ info.z }}</td>
+                        </tr>
+                        <tr >
+                          <td scope="row" style=" border-color: rgb(21,87,36);background-color: rgb(195,230,203);">Probability</td>
+                          <td colspan="2" style="border-color: rgb(21,87,36);">{{ probability }}</td>
+                        </tr>
+                        <tr >
+                          <td scope="row" style="border-color: rgb(21,87,36); background-color: rgb(195,230,203);">Malignancy score</td>
+                          <td colspan="2" style="border-color: rgb(21,87,36);">{{ info.score }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="row" style="margin-bottom: 20px;text-align: center; ">
+                                          <div class="col"  >
+                                                <button type="button" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;">Mark Concerning</button>
+                                          </div>
+                                          <div class="col" >
+                                                <button type="button" class="btn btn-outline-danger">Dismiss</button>
+                                          </div>
+                                </div>
+                              </div>
+    
+              </div>
+
+          </div> <!-- end of class tab-pane active -->
+
+
+
+
+          <div class="tab-pane" id="annotate" role="tabpanel">
+              
+            <div class="row" style="">
+
+            <div class="col" >
+                <img style="margin-top: 20px;" src="data:image/png;base64,{{ img }}" height="500" width="500"/>
+
+            </div>
+
+            <div class="col">
+
+              <div class="card" style="margin-top: 20px; margin-left:0px; margin-right: 0px;background-color: rgb(242,242,242); width: 340px;" >
+              <div class="card-body">
+                    <form method = "POST" action = "/submit/">
+
+                      <div class="form-group">
+                        <label>Position</label><br>
+                                                    
+                          <div class="form-check form-check-inline col-md-6">
+                          <input class="form-check-input" type="radio" name="leftlung" id="leftLung" {% if info.position == 'L' %} checked="checked" {% endif %}>
+                           <label class="form-check-label" >Left lung</label>
+
+                          </div>
+                          
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rightlung" id="rightlung" {% if info.position == 'R' %} checked="checked" {% endif %}>
+                            <label class="form-check-label">Right lung</label>
+                          </div>
+                                                    
+                      </div>
+
+                      <div class="form-group">
+                        <label>State</label><br>
+                                                    
+                        <div class="form-check form-check-inline col-md-6">
+                          <input class="form-check-input" type="radio" name="solid" id="solid" {% if info.state == 'SL' %} checked="checked" {% endif %}>
+                          <label class="form-check-label" >Solid</label>
+                        </div>
+                        
+                        <div class="form-check form-check-inline ">
+                          <input class="form-check-input" type="radio" name="semisolid" id="semisolid" {% if info.state == 'SS' %} checked="checked" {% endif %}>
+                          <label class="form-check-label">Semi-solid</label>
+                        </div>
+                                                    
+                        <div class="form-check form-check-inline ">
+                          <input class="form-check-input" type="radio" name="groundglass" id="groundglass" {% if info.state == 'GG' %} checked="checked" {% endif %}>
+                          <label class="form-check-label" >Ground glass</label>
+                        </div>
+
+                      </div>
+
+                      <div class="form-group">
+                        <label>Size</label><br>
+                                                    
+                        <div class="form-check form-check-inline col-md-6">
+                          <input class="form-check-input" type="radio" name="unchanged" id="unchanged" {% if info.size == 'UC' %} checked="checked" {% endif %}>
+                          <label class="form-check-label">Unchanged</label>
+                        </div>
+                        
+                        <div class="form-check form-check-inline col-md-4">
+                          <input class="form-check-input" type="radio" name="increased" id="increased" {% if info.size == 'IN' %} checked="checked" {% endif %}>
+                          <label class="form-check-label">Increased</label>
+                        </div>
+                                                    
+                        <div class="form-check form-check-inline col-md-6">
+                          <input class="form-check-input" type="radio" name="decreased" id="decreased" {% if info.size  == 'DC' %} checked="checked" {% endif %}>
+                          <label class="form-check-label">Decreased</label>
+                        </div>
+
+                        <div class="form-check form-check-inline col-md-4">
+                          <input class="form-check-input" type="radio" name="new" id="new" {% if info.size == 'NW' %} checked="checked" {% endif %}>
+                          <label class="form-check-label" >New</label>
+                        </div>
+
+                      </div>
+
+                      <div class="form-group" >
+                        <label>Notes</label>
+                        <textarea class="form-control" style="background-color: rgb(242,242,242);">{{ info.notes }}</textarea>
+                      </div>
+
+                      <button type="submit" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;">Submit</button>
+                    </form>
+
+
+                    </div>
+                  </div>
+                  </div>
+                            
+              </div>
+         
+          </div> <!-- end of class tab-pane -->
+
+
+
+
+    </div> <!-- end of class="tab-content" -->
+  </div> <!-- end of second row in second col of main row --> 
+  </div> <!-- end of second col in main row -->
+</div> <!-- end of class row (main row)-->
+</div> <!--end of class container fluid-->
+</body>
+</html>

@@ -23,9 +23,10 @@ from django.urls import path
 
 urlpatterns = [
 	
-    path('',views.index),
-	path('<int:id>/', views.index),
-	url(r'^open/', views.open),
+    path('', views.open_case),
+    path('portal',views.portal),
+	path('portal/<int:case_id>/<int:id>/', views.portal),
+    path('process/', views.process),
 	#url(r'^annotate/', views.annotate),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

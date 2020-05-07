@@ -5,7 +5,7 @@ class Case(models.Model):
 
 	QUALITY = (('O', 'Outstanding'), ('G','Good'), ('S','Satisfactory'))
 
-	case_id = models.AutoField(auto_created = True, primary_key = True, verbose_name = 'Case ID')
+	case_id = models.IntegerField(default = 0, verbose_name = 'Case Id')
 	next_visit = models.IntegerField(default = 0, verbose_name = 'Days Before Next Visit')
 	kvp = models.FloatField(default = 0.0, verbose_name = 'kVp')
 	ma = models.FloatField(default = 0.0, verbose_name = 'mA')
@@ -41,6 +41,17 @@ class Nodule(models.Model):
 	slice_index = models.IntegerField(default = 0, verbose_name = 'Slice Index')
 	diameter = models.FloatField(default = 0.0)
 	probability = models.FloatField(default = 0.0)
+	concerning = models.BooleanField(default = False)
+
+	subtlety = models.IntegerField(default = 1)
+	internal_structure = models.IntegerField(default = 1)
+	calcification = models.IntegerField(default = 1)
+	sphericity = models.IntegerField(default = 1)
+	margin = models.IntegerField(default = 1)
+	lobulation = models.IntegerField(default = 1)
+	spiculation = models.IntegerField(default = 1)
+	texture = models.IntegerField(default = 1)
+
 
 
 	class Meta:

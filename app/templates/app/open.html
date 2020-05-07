@@ -8,30 +8,27 @@
 
 </head>
 
-<body>
+<body style="background-color: rgb(242,242,242);">
 
-<nav class="navbar navbar-dark navbar-expand-lg" style="background-color: rgb(0,51,0); height: 80px;">
-  <a class="navbar-brand" href="#">Persistent Project</a>
+<nav class="navbar navbar-dark navbar-expand-lg" style="background-color:  rgb(21,87,36); height: 60px;">
+  <a class="navbar-brand" href="#" style="margin-left: 40px;">Persistent Project</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item " style="margin-left: 435px;">
-        <a class="nav-link" href="/">Home</a>
+    <ul class="navbar-nav mr-auto" >
+      <li class="nav-item" style="margin-left: 450px;">
+        <a class="nav-link" href="#" style="width: 100px;">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/open">Open Image <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/open" style="width: 150px;">Open Image</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Detect and Select</a>
+        <a class="nav-link" href="#" style="width: 150px;">Import Image</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/annotate">Annotate and Segment</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Report and Export</a>
+        <a class="nav-link" href="#" style="width: 150px;">Report and Export</a>
       </li>
     </ul>
     
@@ -39,32 +36,28 @@
 </nav>
 
 <div class="container-fluid" style="text-align: center;">
-  <p class="lead" style="margin-top:60px; margin-left: 220px; margin-right: 220px;">Select an existing case or import imagery and create a new case to begin.</p>
+  <p class="lead" style="margin-top:40px; margin-left: 220px; margin-right: 220px;">Select an existing case or import imagery and create a new case to begin.</p>
 
-<div class="card" style="margin-left: 300px; margin-right: 300px; margin-top: 40px;border-color: green;">
-  <h6 class="card-header" style="color: rgb(0,90,0);border-color: green;">Available images</h6>
-  
-  <div class="card-body">
+<!-- RGB values: dark green: rgb(21,87,36); light green: rgb(195,230,203); green : rgb(40,167,69); -->
 
-    <div class="list-group" style="border-color: green;">
+      <div class="list-group list-group-flush" id="myListImg" role="tablist" style="display: inline-block; border-color: green; margin-top: 10px; margin-bottom: 20px; width:400px;">
+              <li class="list-group-item list-group-item-action " style="background-color: rgb(21,87,36); color: white;" >Available Images</li>
+                {% for rc in registered_cases %}
+              <a class="list-group-item list-group-item-action list-group-item-success" data-toggle="list" href="/portal/{{ rc.case_id }}/" role="tab">{{ rc.patient_id }}</a>
+                {% endfor %}
+        </div>  
+    <br>
+        <form method = "POST" action = "/process/">
+          {% csrf_token %}
+          <select id="case" name="case">
+            {% for case in cases %}
+              <option value="{{ case }}">{{ case }}</option>
+            {% endfor %}
+          </select>
+          <input type="submit" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;">Import Image</input>
+        </form>
+      <hr>
 
-      <a href="#" class="list-group-item list-group-item-action" style="color: green; border-color: green;">IMG#1</a>
-      <a href="#" class="list-group-item list-group-item-action" style="color: green;border-color: green;">IMG#2</a>
-      <a href="#" class="list-group-item list-group-item-action" style="color: green;border-color: green;">IMG#3</a>
-      <a href="#" class="list-group-item list-group-item-action" style="color: green;border-color: green;">IMG#4</a>
-      <a href="#" class="list-group-item list-group-item-action" style="color: green;border-color: green;">IMG#5</a>
-   </div>    
-
-  </div>
-
-</div>
-
-<div class="card" style="margin-top: 30px; margin-left: 300px; margin-right: 300px; margin-bottom: 30px;border-color: green;">
-  <h6 class="card-header" ><a href="#"  style="color: rgb(0,90,0);">Import image series for new case</a></h6>
-</div>
-<br>
-<hr> 
-<br><br>
 </div>
 
 </body>

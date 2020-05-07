@@ -150,6 +150,12 @@ def process(request):
 			
 # def submit(request):
 # 	if request.method == 'POST':
+# 		id = request.POST.get('id')
+		
+# 		nodule = Nodule.objects.get(id = id)
+# 		ll = request.POST.get('leftlung')
+# 		rl = request.POST.get('rightlung')
+		
 
 
 

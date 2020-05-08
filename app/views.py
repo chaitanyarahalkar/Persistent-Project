@@ -66,7 +66,7 @@ def nms(output, nms_th):
 	return bboxes
 
 def portal(request,case_id,id = 0):
-
+			
 		
 	patient_case = Case.objects.get(case_id = case_id)
 	nodules = Nodule.objects.filter(case = patient_case)
@@ -92,6 +92,7 @@ def portal(request,case_id,id = 0):
 def open_case(request):
 
 	registered_cases = Case.objects.all()
+	
 	return render(request, 'app/open.html', {'cases': available_cases, 'registered_cases': registered_cases})
 
 
@@ -148,6 +149,7 @@ def process(request):
 	return HttpResponse('Get not allowed!')
 
 			
+<<<<<<< Updated upstream
 # def submit(request):
 # 	if request.method == 'POST':
 # 		id = request.POST.get('id')
@@ -156,6 +158,8 @@ def process(request):
 # 		ll = request.POST.get('leftlung')
 # 		rl = request.POST.get('rightlung')
 		
+=======
+>>>>>>> Stashed changes
 
 
 

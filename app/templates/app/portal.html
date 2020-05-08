@@ -46,7 +46,7 @@
 
   <div class="col-3" style="text-align : center;">
 
-      <div class="list-group list-group-flush" id="myListImg" role="tablist" style="display: inline-block; border-color: green; margin-top: 40px; margin-bottom: 20px; width:260px; margin-left: 40px;">
+      <div class="list-group list-group-flush" id="myListImg" role="tablist" style="display: inline-block; border-color: green; margin-top: 130px; margin-bottom: 20px; width:260px; margin-left: 40px;">
               <li class="list-group-item list-group-item-action " style="background-color: rgb(21,87,36); color: white;" >Available Nodules</li>
               {% for nodule in nodules %}
               <a class="list-group-item list-group-item-action list-group-item-success" href="/portal/{{case_id}}/{{ nodule.0 }}/" >Nodule {{ nodule.0|add:'1' }}</a>
@@ -64,7 +64,7 @@ display: inline-block;">
   <div class="row">
       <div class="list-group list-group-horizontal align-items-center" id="myList" role="tablist" style="margin-bottom: 20px;" >
         
-            <button class="btn btn-light list-group-item list-group-item-action active" style="margin-top: 40px; margin-left: 300px ;margin-right: 40px; background-color: rgb(21,87,36); color:white;  " data-toggle="list" href="#detect" role="tab">Detect</button>
+            <button class="btn btn-light list-group-item list-group-item-action active" style="margin-top: 40px; margin-left: 150px ;margin-right: 40px; background-color: rgb(21,87,36); color:white;  " data-toggle="list" href="#detect" role="tab">Detect</button>
          
             <button class="btn btn-light list-group-item list-group-item-action " style="margin-top: 40px; margin-right: 0px; background-color: rgb(21,87,36); color:white; " data-toggle="list" href="#annotate" role="tab">Annotate</button>
           

@@ -27,7 +27,7 @@ target_names = ['Non-Cancerous','Cancerous']
 
 gbtree = pickle.load(open("xgboost-trainer.bin", "rb"))
 predict_fn = lambda x: gbtree.predict_proba(x).astype(float)
-data =  np.loadtxt(fname = 'data-1.csv', delimiter = ',')
+data =  np.loadtxt(fname = 'training-dataset.csv', delimiter = ',')
 X = data[:,0:8]
 Y = data[:,8]
 train, test, labels_train, labels_test = train_test_split(X,Y,train_size=0.70,random_state=42)

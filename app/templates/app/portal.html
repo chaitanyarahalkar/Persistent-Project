@@ -54,7 +54,7 @@
               
       </div>  
     <br>
-        <button type="button" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;" onclick="window.location.href='/admin/app/nodule/add/' ">Add a Nodule</button>
+        <button type="button" class="btn btn-outline-success" style="margin-left: 40px;" onclick="window.location.href='/admin/app/nodule/add/' ">Add a Nodule</button>
 
   </div>
 
@@ -64,9 +64,9 @@ display: inline-block;">
   <div class="row">
       <div class="list-group list-group-horizontal align-items-center" id="myList" role="tablist" style="margin-bottom: 20px;" >
         
-            <button class="btn btn-light list-group-item list-group-item-action active" style="margin-top: 40px; margin-left: 150px ;margin-right: 40px; background-color: rgb(21,87,36); color:white;  " data-toggle="list" href="#detect" role="tab">Detect</button>
+            <button class="btn btn-outline-success" style="margin-top: 40px; margin-left: 150px ;margin-right: 40px;" data-toggle="list" href="#detect" role="tab">Detect</button>
          
-            <button class="btn btn-light list-group-item list-group-item-action " style="margin-top: 40px; margin-right: 0px; background-color: rgb(21,87,36); color:white; " data-toggle="list" href="#annotate" role="tab">Annotate</button>
+            <button class="btn btn-outline-success" style="margin-top: 40px; margin-right: 0px;" data-toggle="list" href="#annotate" role="tab">Annotate</button>
           
       </div>
       
@@ -116,7 +116,7 @@ display: inline-block;">
                       {% csrf_token %}
                     <div class="row" style="margin-bottom: 20px;text-align: center; ">
                                           <div class="col">
-                                                <input type="submit" value="Mark Concerning" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;" name="mc"/>
+                                                <input type="submit" value="Mark Concerning" class="btn btn-outline-success" name="mc"/>
                                           </div>
                                           <div class="col" >
                                                 <input type="submit" value="Dismiss" class="btn btn-outline-danger" name="ds"/>
@@ -214,7 +214,7 @@ display: inline-block;">
                         <textarea name="notes" class="form-control" style="background-color: rgb(242,242,242);">{{ info.notes }}</textarea>
                       </div>
 
-                      <button type="submit" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;">Submit</button>
+                      <button type="submit" class="btn btn-outline-success">Submit</button>
                     </form>
 
 

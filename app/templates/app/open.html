@@ -40,10 +40,10 @@
 
 <!-- RGB values: dark green: rgb(21,87,36); light green: rgb(195,230,203); green : rgb(40,167,69); -->
 
-      <div class="list-group list-group-flush" id="myListImg" role="tablist" style="display: inline-block; border-color: green; margin-top: 10px; margin-bottom: 20px; width:400px;">
+      <div class="list-group list-group-flush" id="myListImg" role="tablist" style="display: inline-block; border-color: green; margin-top: 10px; margin-bottom: 20px; width:600px;">
               <li class="list-group-item list-group-item-action " style="background-color: rgb(21,87,36); color: white;" >Available Images</li>
                 {% for rc in registered_cases %}
-              <a class="list-group-item list-group-item-action list-group-item-success" data-toggle="list" href="/portal/{{ rc.case_id }}/" role="tab">{{ rc.patient_id }}</a>
+              <a class="list-group-item list-group-item-action list-group-item-success" href="/portal/{{ rc.case_id }}/0/">{{ rc.patient_id }}</a>
                 {% endfor %}
         </div>  
     <br>
@@ -54,7 +54,9 @@
               <option value="{{ case }}">{{ case }}</option>
             {% endfor %}
           </select>
-          <input type="submit" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;">Import Image</input>
+          <br>
+          <br>
+          <input type="submit" value="Submit" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;"/>
         </form>
       <hr>
 

@@ -112,14 +112,19 @@ display: inline-block;">
                         </tr>
                         </tbody>
                     </table>
+                    <form method="POST">
+                      {% csrf_token %}
                     <div class="row" style="margin-bottom: 20px;text-align: center; ">
-                                          <div class="col"  >
-                                                <button type="button" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;">Mark Concerning</button>
+                                          <input type="hidden" value="{{ info.id }}" name="id"/>
+                                          <div class="col">
+                                                <input type="submit" value="Mark Concerning" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;" name="mc"/>
                                           </div>
                                           <div class="col" >
-                                                <button type="button" class="btn btn-outline-danger">Dismiss</button>
+                                                <input type="submit" value="Dismiss" class="btn btn-outline-danger" name="ds"/>
                                           </div>
+                                        
                                 </div>
+                                </form>
                               </div>
     
               </div>

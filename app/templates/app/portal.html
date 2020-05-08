@@ -154,13 +154,13 @@ display: inline-block;">
                         <label>Position</label><br>
                                                     
                           <div class="form-check form-check-inline col-md-6">
-                          <input class="form-check-input" type="radio" name="leftlung" id="leftlung" {% if info.position == 'L' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="position" id="leftlung" {% if info.position == 'L' %} checked="checked" {% endif %}>
                            <label class="form-check-label" >Left lung</label>
 
                           </div>
                           
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rightlung" id="rightlung" {% if info.position == 'R' %} checked="checked" {% endif %}>
+                            <input class="form-check-input" type="radio" name="position" id="rightlung" {% if info.position == 'R' %} checked="checked" {% endif %}>
                             <label class="form-check-label">Right lung</label>
                           </div>
                                                     
@@ -170,17 +170,17 @@ display: inline-block;">
                         <label>State</label><br>
                                                     
                         <div class="form-check form-check-inline col-md-6">
-                          <input class="form-check-input" type="radio" name="solid" id="solid" {% if info.state == 'SL' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="state" id="solid" {% if info.state == 'SL' %} checked="checked" {% endif %}>
                           <label class="form-check-label" >Solid</label>
                         </div>
                         
                         <div class="form-check form-check-inline ">
-                          <input class="form-check-input" type="radio" name="semisolid" id="semisolid" {% if info.state == 'SS' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="state" id="semisolid" {% if info.state == 'SS' %} checked="checked" {% endif %}>
                           <label class="form-check-label">Semi-solid</label>
                         </div>
                                                     
                         <div class="form-check form-check-inline ">
-                          <input class="form-check-input" type="radio" name="groundglass" id="groundglass" {% if info.state == 'GG' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="state" id="groundglass" {% if info.state == 'GG' %} checked="checked" {% endif %}>
                           <label class="form-check-label" >Ground glass</label>
                         </div>
 
@@ -190,22 +190,22 @@ display: inline-block;">
                         <label>Size</label><br>
                                                     
                         <div class="form-check form-check-inline col-md-6">
-                          <input class="form-check-input" type="radio" name="unchanged" id="unchanged" {% if info.size == 'UC' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="size" id="unchanged" {% if info.size == 'UC' %} checked="checked" {% endif %}>
                           <label class="form-check-label">Unchanged</label>
                         </div>
                         
                         <div class="form-check form-check-inline col-md-4">
-                          <input class="form-check-input" type="radio" name="increased" id="increased" {% if info.size == 'IN' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="size" id="increased" {% if info.size == 'IN' %} checked="checked" {% endif %}>
                           <label class="form-check-label">Increased</label>
                         </div>
                                                     
                         <div class="form-check form-check-inline col-md-6">
-                          <input class="form-check-input" type="radio" name="decreased" id="decreased" {% if info.size  == 'DC' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="size" id="decreased" {% if info.size  == 'DC' %} checked="checked" {% endif %}>
                           <label class="form-check-label">Decreased</label>
                         </div>
 
                         <div class="form-check form-check-inline col-md-4">
-                          <input class="form-check-input" type="radio" name="new" id="new" {% if info.size == 'NW' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="size" id="new" {% if info.size == 'NW' %} checked="checked" {% endif %}>
                           <label class="form-check-label" >New</label>
                         </div>
 

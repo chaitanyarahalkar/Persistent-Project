@@ -27,6 +27,6 @@ urlpatterns = [
     path('portal',views.portal),
 	path('portal/<int:case_id>/<int:id>/', views.portal),
     path('process/', views.process),
-	path('submit/', views.submit),
+	# path('submit/', views.submit),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

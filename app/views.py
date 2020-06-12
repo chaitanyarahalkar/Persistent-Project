@@ -115,6 +115,34 @@ def portal(request,case_id,id = 0):
 	return render(request, 'app/portal.html', {'nodules': enumerate(nodules),'info': nodules[id], 'img':img, 'case_id': case_id, 'explanation': explanation, 'probability': '{:.2f}'.format(cancerous) })
 
 
+def report(request,case_id):
+
+	patient_case = Case.objects.get(case_id = case_id)
+	ndls = Nodule.objects.filter(case = patient_case)
+
+	nodules = list()
+
+	for num,nod in enumerate(ndls):
+		test = np.array([nod.subtlety, nod.internal_structure, nod.calcification,nod.sphericity,nod.margin,nod.lobulation,nod.spiculation,nod.texture])
+		exp = explainer.explain_instance(test,predict_fn, num_features=10000)
+		non_cancerous = exp.predict_proba[0]
+		cancerous = 1 - non_cancerous 
+		try:
+			data = exp.as_list()
+		except Exception as e:
+			data = exp.as_list(label = 0)
+
+		explanation = generate_explanation(cancerous, non_cancerous, data)
+
+		string = base64.b64encode(nod.fig.read())
+		img  = urllib.parse.quote(string)
+
+		nodules.append({'nodule':nod,'explanation':explanation,'img':img,'probability': cancerous,'num':num})
+	
+
+	return render(request,'app/report.html',{'nodules':nodules, 'patient': patient_case})
+
+
 def open_case(request):
 
 	registered_cases = Case.objects.all()
@@ -175,19 +203,8 @@ def process(request):
 	return HttpResponse('Get not allowed!')
 
 			
-# <<<<<<< Updated upstream
-# # def submit(request):
-# # 	if request.method == 'POST':
-# # 		id = request.POST.get('id')
-		
-# # 		nodule = Nodule.objects.get(id = id)
-# # 		ll = request.POST.get('leftlung')
-# # 		rl = request.POST.get('rightlung')
-		
-# =======
-# >>>>>>> Stashed changes
 
-
+	
 
 
 

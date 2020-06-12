@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head type="text/css" media="print" />
   <meta charset="UTF-8"/>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -8,12 +8,22 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+<style>
+
+@media print {
+  #generate {
+    display: none;
+  }
+}
+
+</style>
+
 </head>
 <body style= "">
 
 <!-- RGB values: dark green: rgb(21,87,36); light green: rgb(195,230,203); green : rgb(40,167,69); 
 
-sky blue: rgb(0, 123, 255)
+sky blue: rgb(0, 184, 230)
 
 background-color: rgb(242,242,242);
 -->
@@ -37,7 +47,7 @@ background-color: rgb(242,242,242);
         <a class="nav-link" href="#" style="width: 150px;">Import Image</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#" style="width: 150px;">Report and Export</a>
+        <a class="nav-link" href="/report" style="width: 150px;">Report and Export</a>
       </li>
     </ul>
     
@@ -48,92 +58,109 @@ background-color: rgb(242,242,242);
 
 <div class="container-fluid">
 <h2 class="display-4" style="margin-top:40px;margin-bottom: 20px; text-align: center;">RSNA Standard Template</h2>
+<center><button type="button" id="generate" class="btn btn-primary" onclick="window.print();return false;">Generate Report</button><center>
 
 <hr>
 <div class="row">
 <table class="table table-borderless"  style="margin-top: 20px;margin-left: 250px;margin-right: 0px; max-width: 700px; ">
 <tbody  >
   <tr>
-    <th>Case ID:</th>
+    <th>Case ID: {{ patient.case_id }}</th>
   
-    <th>Next visit:</th>
+    <th>Next visit: {{ patient.next_visit }} days</th>
+  </tr>
+  <tr>
+    <th> Patient ID: {{ patient.patient_id }} </th>
   </tr>
   <tr >
     <th scope="row">Technical parameters</th>
   </tr>
   <tr>
-    <td>kVp:</td>
+    <td>kVp: {{ patient.kvp }}</td>
   </tr>
   <tr>
-    <td>mA:</td>
+    <td>mA: {{ patient.ma }}</td>
   <tr>
-    <td>DLP:</td>
+    <td>DLP: {{ patient.dlp }}</td>
   </tr>
 </tr>
   <tr>
     <th scope="row">Clinical information</th>
   </tr>
   <tr>
-     <td>Diagnostic Quality:</td>
+     <td>Diagnostic Quality: {{ patient.diagnostic_quality }}</td>
   </tr>
   <tr>
-     <td>See physician:</td>
+      {% if patient.see_physician %}
+     <td>See physician: Yes</td>
+     {% else %}
+     <td>See physician: No</td>
+     {% endif %}
   </tr>
   <tr>
-     <td>Comments:</td>
+     <td>Comments: {{ patient.comments }}</td>
   </tr>
   
   
 </tbody>
 </table>
 </div>
+{% for n in nodules %}
 <div class="row">
 <div class="col" style="margin-left: 240px;">
-<table class="table table-borderless"  style="margin-top: 20px;margin-right: 200px; max-width: 700px; ">
-<tbody  >
+  
+<table class="table table-bordered"  style="margin-top: 20px;margin-right: 200px; max-width: 700px; ">
+<tbody>
+
+
   <tr>
-    <th scope="row">Lung Nodules</th>
+    <th scope="row">Nodule {{ n.num|add:"1" }} </th>
   </tr>
   <tr>
-    <th scope="row">Nodule #1</th>
+    <td>Position: {{ n.nodule.position }}</td>
   </tr>
   <tr>
-    <td>Position:</td>
+    <td>State: {{ n.nodule.state }}</td>
   </tr>
   <tr>
-    <td>State:</td>
+    <td>Size: {{ n.nodule.size }}</td>
   </tr>
   <tr>
-    <td>Size:</td>
+    <td>Slice index: {{ n.nodule.slice_index }}</td>
   </tr>
   <tr>
-    <td>Slice index:</td>
+    <td>Score: {{ n.nodule.score }}</td>
   </tr>
   <tr>
-    <td>Score:</td>
+    <td>Diameter: {{ n.nodule.diameter }}</td>
   </tr>
   <tr>
-    <td>Diameter:</td>
+    <td>Probability: {{ n.probability }}</td>
   </tr>
   <tr>
-    <td>Probability:</td>
-  </tr>
-  <tr>
-    <td>Concerning:</td>
+    {% if n.nodule.concerning %}
+    <td>Concerning: Yes</td>
+    {% else %}
+    <td>Concerning: No</td>
+    {% endif %}
   </tr>
   
 </tbody>
 </table>
+
 </div>
 
 
 <div class="col">
-<img style="margin-top: 80px; margin-left: 0px;" src="data:image/png;base64,{{ img }}" height="300" width="300"/>
-<p style="margin-left: 20px;"><h6>Explanation</h6><br>  </p>
+<img style="margin-top: 80px; margin-left: 0px;" src="data:image/png;base64,{{ n.img }}" height="300" width="300"/>
+<p style="margin-left: 20px;"><h6>Explanation</h6><br> {{ n.explanation }} </p>
 
 
 </div>
+
 </div>
+<hr>
+{% endfor %}
 
 </div>
 </body>

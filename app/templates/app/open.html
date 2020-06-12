@@ -8,9 +8,9 @@
 
 </head>
 
-<body style="background-color: rgb(242,242,242);">
+<body>
 
-<nav class="navbar navbar-dark navbar-expand-lg" style="background-color:  rgb(21,87,36); height: 60px;">
+<nav class="navbar navbar-dark navbar-expand-lg" style="background-color: rgb(0, 184, 230); height: 60px;">
   <a class="navbar-brand" href="#" style="margin-left: 40px;">Persistent Project</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -38,12 +38,16 @@
 <div class="container-fluid" style="text-align: center;">
   <p class="lead" style="margin-top:40px; margin-left: 220px; margin-right: 220px;">Select an existing case or import imagery and create a new case to begin.</p>
 
-<!-- RGB values: dark green: rgb(21,87,36); light green: rgb(195,230,203); green : rgb(40,167,69); -->
+<!-- RGB values: dark green: rgb(21,87,36); light green: rgb(195,230,203); green : rgb(40,167,69);
 
-      <div class="list-group list-group-flush" id="myListImg" role="tablist" style="display: inline-block; border-color: green; margin-top: 10px; margin-bottom: 20px; width:600px;">
-              <li class="list-group-item list-group-item-action " style="background-color: rgb(21,87,36); color: white;" >Available Images</li>
+sky blue: rgb(0, 184, 230)
+
+ -->
+
+      <div class="list-group " id="myListImg" role="tablist" style="display: inline-block; margin-top: 10px; margin-bottom: 20px; width:600px; border-color: rgb(0, 184, 230)">
+              <li class="list-group-item list-group-item-action " style="border-color: rgb(0, 184, 230)" >Available Images</li>
                 {% for rc in registered_cases %}
-              <a class="list-group-item list-group-item-action list-group-item-success" href="/portal/{{ rc.case_id }}/0/">{{ rc.patient_id }}</a>
+              <a class="list-group-item list-group-item-action " href="/portal/{{ rc.case_id }}/0/" style="border-color: rgb(0, 184, 230)">{{ rc.patient_id }}</a>
                 {% endfor %}
         </div>  
     <br>
@@ -56,7 +60,7 @@
           </select>
           <br>
           <br>
-          <input type="submit" value="Submit" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;"/>
+          <input type="submit" value="Submit" class="btn btn-light" style="border-color: rgb(0, 184, 230)"/>
         </form>
       <hr>
 

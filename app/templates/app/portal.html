@@ -24,10 +24,10 @@
         <a class="nav-link" href="#" style="width: 100px;">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/open" style="width: 150px;">Open Image</a>
+        <a class="nav-link" href="/" style="width: 150px;">Open Image</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" style="width: 150px;">Import Image</a>
+        <a class="nav-link" href="/admin" style="width: 150px;">Administration</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" style="width: 150px;">Report and Export</a>
@@ -54,7 +54,7 @@
               
       </div>  
     <br>
-        <button type="button" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;" onclick="window.location.href='/admin/app/nodule/add/' ">Add a Nodule</button>
+        <button type="button" class="btn btn-outline-success" style="margin-left: 40px;" onclick="window.location.href='/admin/app/nodule/add/' ">Add a Nodule</button>
 
   </div>
 
@@ -64,9 +64,9 @@ display: inline-block;">
   <div class="row">
       <div class="list-group list-group-horizontal align-items-center" id="myList" role="tablist" style="margin-bottom: 20px;" >
         
-            <button class="btn btn-light list-group-item list-group-item-action active" style="margin-top: 40px; margin-left: 150px ;margin-right: 40px; background-color: rgb(21,87,36); color:white;  " data-toggle="list" href="#detect" role="tab">Detect</button>
+            <button class="btn btn-outline-success" style="margin-top: 40px; margin-left: 150px ;margin-right: 40px;" data-toggle="list" href="#detect" role="tab">Detect</button>
          
-            <button class="btn btn-light list-group-item list-group-item-action " style="margin-top: 40px; margin-right: 0px; background-color: rgb(21,87,36); color:white; " data-toggle="list" href="#annotate" role="tab">Annotate</button>
+            <button class="btn btn-outline-success" style="margin-top: 40px; margin-right: 0px;" data-toggle="list" href="#annotate" role="tab">Annotate</button>
           
       </div>
       
@@ -115,9 +115,8 @@ display: inline-block;">
                     <form method="POST">
                       {% csrf_token %}
                     <div class="row" style="margin-bottom: 20px;text-align: center; ">
-                                          <input type="hidden" value="{{ info.id }}" name="id"/>
                                           <div class="col">
-                                                <input type="submit" value="Mark Concerning" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;" name="mc"/>
+                                                <input type="submit" value="Mark Concerning" class="btn btn-outline-success" name="mc"/>
                                           </div>
                                           <div class="col" >
                                                 <input type="submit" value="Dismiss" class="btn btn-outline-danger" name="ds"/>
@@ -147,20 +146,19 @@ display: inline-block;">
 
               <div class="card" style="margin-top: 20px; margin-left:0px; margin-right: 0px;background-color: rgb(242,242,242); width: 340px;" >
               <div class="card-body">
-                    <form method = "POST" action = "/submit/">
-                      
-                      <input type="hidden" name="id" value="{{ info.id }}">
+                    <form method = "POST">
+                      {% csrf_token %}
                       <div class="form-group">
                         <label>Position</label><br>
                                                     
                           <div class="form-check form-check-inline col-md-6">
-                          <input class="form-check-input" type="radio" name="position" id="leftlung" {% if info.position == 'L' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="position" value="L" id="leftlung" {% if info.position == 'L' %} checked="checked" {% endif %}>
                            <label class="form-check-label" >Left lung</label>
 
                           </div>
                           
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="position" id="rightlung" {% if info.position == 'R' %} checked="checked" {% endif %}>
+                            <input class="form-check-input" type="radio" name="position" value="R" id="rightlung" {% if info.position == 'R' %} checked="checked" {% endif %}>
                             <label class="form-check-label">Right lung</label>
                           </div>
                                                     
@@ -170,17 +168,17 @@ display: inline-block;">
                         <label>State</label><br>
                                                     
                         <div class="form-check form-check-inline col-md-6">
-                          <input class="form-check-input" type="radio" name="state" id="solid" {% if info.state == 'SL' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="state" value="SL" id="solid" {% if info.state == 'SL' %} checked="checked" {% endif %}>
                           <label class="form-check-label" >Solid</label>
                         </div>
                         
                         <div class="form-check form-check-inline ">
-                          <input class="form-check-input" type="radio" name="state" id="semisolid" {% if info.state == 'SS' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="state" value="SS" id="semisolid" {% if info.state == 'SS' %} checked="checked" {% endif %}>
                           <label class="form-check-label">Semi-solid</label>
                         </div>
                                                     
                         <div class="form-check form-check-inline ">
-                          <input class="form-check-input" type="radio" name="state" id="groundglass" {% if info.state == 'GG' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="state" value="GG" id="groundglass" {% if info.state == 'GG' %} checked="checked" {% endif %}>
                           <label class="form-check-label" >Ground glass</label>
                         </div>
 
@@ -190,22 +188,22 @@ display: inline-block;">
                         <label>Size</label><br>
                                                     
                         <div class="form-check form-check-inline col-md-6">
-                          <input class="form-check-input" type="radio" name="size" id="unchanged" {% if info.size == 'UC' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="size" value="UC" id="unchanged" {% if info.size == 'UC' %} checked="checked" {% endif %}>
                           <label class="form-check-label">Unchanged</label>
                         </div>
                         
                         <div class="form-check form-check-inline col-md-4">
-                          <input class="form-check-input" type="radio" name="size" id="increased" {% if info.size == 'IN' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="size" value="IN" id="increased" {% if info.size == 'IN' %} checked="checked" {% endif %}>
                           <label class="form-check-label">Increased</label>
                         </div>
                                                     
                         <div class="form-check form-check-inline col-md-6">
-                          <input class="form-check-input" type="radio" name="size" id="decreased" {% if info.size  == 'DC' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="size" value="DC" id="decreased" {% if info.size  == 'DC' %} checked="checked" {% endif %}>
                           <label class="form-check-label">Decreased</label>
                         </div>
 
                         <div class="form-check form-check-inline col-md-4">
-                          <input class="form-check-input" type="radio" name="size" id="new" {% if info.size == 'NW' %} checked="checked" {% endif %}>
+                          <input class="form-check-input" type="radio" name="size" value="NW" id="new" {% if info.size == 'NW' %} checked="checked" {% endif %}>
                           <label class="form-check-label" >New</label>
                         </div>
 
@@ -213,10 +211,10 @@ display: inline-block;">
 
                       <div class="form-group" >
                         <label>Notes</label>
-                        <textarea class="form-control" style="background-color: rgb(242,242,242);">{{ info.notes }}</textarea>
+                        <textarea name="notes" class="form-control" style="background-color: rgb(242,242,242);">{{ info.notes }}</textarea>
                       </div>
 
-                      <button type="submit" class="btn btn-light" style="background-color: rgb(21,87,36); color:white;">Submit</button>
+                      <button type="submit" class="btn btn-outline-success">Submit</button>
                     </form>
 
 

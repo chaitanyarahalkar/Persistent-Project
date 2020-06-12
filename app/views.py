@@ -27,7 +27,7 @@ target_names = ['Non-Cancerous','Cancerous']
 
 gbtree = pickle.load(open("xgboost-trainer.bin", "rb"))
 predict_fn = lambda x: gbtree.predict_proba(x).astype(float)
-data =  np.loadtxt(fname = 'data-1.csv', delimiter = ',')
+data =  np.loadtxt(fname = 'training-dataset.csv', delimiter = ',')
 X = data[:,0:8]
 Y = data[:,8]
 train, test, labels_train, labels_test = train_test_split(X,Y,train_size=0.70,random_state=42)
@@ -66,25 +66,51 @@ def nms(output, nms_th):
 	return bboxes
 
 def portal(request,case_id,id = 0):
-			
-		
+
+	global img,explanation,cancerous
 	patient_case = Case.objects.get(case_id = case_id)
 	nodules = Nodule.objects.filter(case = patient_case)
-	string = base64.b64encode(nodules[id].fig.read())
-	img  = urllib.parse.quote(string)
 
-	test = np.array([nodules[id].subtlety, nodules[id].internal_structure, nodules[id].calcification,nodules[id].sphericity,nodules[id].margin,nodules[id].lobulation,nodules[id].spiculation,nodules[id].texture])
-	exp = explainer.explain_instance(test,predict_fn, num_features=10000)
-	non_cancerous = exp.predict_proba[0]
-	cancerous = 1 - non_cancerous 
-	# exp.show_in_notebook(show_table=True, show_all=False)
-	try:
-		data = exp.as_list()
-	except Exception as e:
-		data = exp.as_list(label = 0)
+	if request.method == 'GET':
+		
+		string = base64.b64encode(nodules[id].fig.read())
+		img  = urllib.parse.quote(string)
 
-	explanation = generate_explanation(cancerous, non_cancerous, data)
-	
+		test = np.array([nodules[id].subtlety, nodules[id].internal_structure, nodules[id].calcification,nodules[id].sphericity,nodules[id].margin,nodules[id].lobulation,nodules[id].spiculation,nodules[id].texture])
+		exp = explainer.explain_instance(test,predict_fn, num_features=10000)
+		non_cancerous = exp.predict_proba[0]
+		cancerous = 1 - non_cancerous 
+		# exp.show_in_notebook(show_table=True, show_all=False)
+		try:
+			data = exp.as_list()
+		except Exception as e:
+			data = exp.as_list(label = 0)
+
+		explanation = generate_explanation(cancerous, non_cancerous, data)
+
+	elif request.method == 'POST':
+
+		nodule = nodules[id]
+		if request.POST.get('mc'):
+			nodule.concerning = True
+
+		if request.POST.get('ds'):
+			nodule.concerning = False
+
+		if request.POST.get('position'):
+			nodule.position = request.POST.get('position')
+
+		if request.POST.get('state'):
+			nodule.state = request.POST.get('state')
+
+		if request.POST.get('size'):
+			nodule.size = request.POST.get('size')
+
+		if request.POST.get('notes'):
+			nodule.notes = request.POST.get('notes')
+
+		nodule.save()
+
 
 	return render(request, 'app/portal.html', {'nodules': enumerate(nodules),'info': nodules[id], 'img':img, 'case_id': case_id, 'explanation': explanation, 'probability': '{:.2f}'.format(cancerous) })
 
@@ -149,17 +175,17 @@ def process(request):
 	return HttpResponse('Get not allowed!')
 
 			
-<<<<<<< Updated upstream
-# def submit(request):
-# 	if request.method == 'POST':
-# 		id = request.POST.get('id')
+# <<<<<<< Updated upstream
+# # def submit(request):
+# # 	if request.method == 'POST':
+# # 		id = request.POST.get('id')
 		
-# 		nodule = Nodule.objects.get(id = id)
-# 		ll = request.POST.get('leftlung')
-# 		rl = request.POST.get('rightlung')
+# # 		nodule = Nodule.objects.get(id = id)
+# # 		ll = request.POST.get('leftlung')
+# # 		rl = request.POST.get('rightlung')
 		
-=======
->>>>>>> Stashed changes
+# =======
+# >>>>>>> Stashed changes
 
 
 

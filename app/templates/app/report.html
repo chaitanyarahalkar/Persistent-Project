@@ -70,133 +70,91 @@
 <div class="container-fluid">
 <h2  style="margin-top:40px;margin-bottom: 20px; text-align: center;">RSNA Standard Template</h2>
 <hr>
-<section data-section-name="Procedure">
-
-<section data-section-name="Technical parameters" style="text-align: center;">
-<header class="level2" ><h4>Technical parameters</h4></header>
-
-<p style="margin-top: 20px;">
-<label>kVp:</label>
-<input type="number" id="T268_1" name="kVp" value="" />
-</p>
-<p>
-<label>mA:</label>
-<input type="number" id="T268_2" name="mA" value="" />
-</p>
-<p>
-<label>DLP: </label>
-<input type="number" id="T268_3" name="DLP" value="" />
-</p>
-
-</section>
-</section>
-<hr>
-
-<section data-section-name="Clinical information" style="text-align: center;">
-<header class="level1"><h4>Clinical information</h4></header>
-<p style="margin-top: 20px;">
-<label>Screening visit: </label>
-<select id="T268_4" name="Screening visit">
-<option id="T268_5" name="Baseline" value="Baseline">Baseline</option>
-<option id="T268_6" name="Year 1" value="Year 1">Year 1</option>
-<option id="T268_7" name="Year 2" value="Year 2">Year 2</option>
-</select>
-</p>
-<p>
-<textarea id="T268_8" name="Clinical information">Lung cancer screening. </textarea>
-</p>
-</section>
-
-<hr>
-<section data-section-name="Findings" style="text-align: center;">
-<header class="level1"><h4>Findings</h4></header>
-<section data-section-name="Exam parameters">
-<header class="level2" style="margin-top: 20px;"><h5>Exam parameters</h5></header>
-
-
-<p style="margin-top: 20px;">
-<label>Diagnostic quality:</label>
-<select id="T268_10" name="Diagnostic quality">
-<option id="T268_11" name="Good" value="Good">Satisfactory</option>
-<option id="T268_12" name="Limited" value="Limited">Limited, but interpretable</option>
-<option id="T268_13" name="Non-diagnostic" value="Non-diagnostic">Non-diagnostic</option>
-</select>
-</p>
-
-<p>
-<label>Comments:</label>
-<textarea id="T268_14" name="Comments" value="" ></textarea>
-</p>
-</section>
-
-<section data-section-name="Lung nodules">
-<header class="level2" style="margin-top: 20px;"> <h5>Lung nodules</h5></header>
-
-
-<div class="card" style="margin-top: 20px;max-width: 400px;text-align: center; margin-left: 400px;" >
-
-      <div class="card-header" id="headingOne" >
-        <h5> Nodule #1 </h5>
-      </div>
-      <div class="card-body">
-      <p>
-          <label>Position</label>
-          <input type="number" id="T268_1" name="kVp" value="" />
-
-          </p>
-          <p>
-          <label>Size</label>
-          <input type="number" id="T268_1" name="kVp" value="" />
-
-          </p>
-          <p>
-          <label>Density</label>
-          <input type="number" id="T268_1" name="kVp" value="" />
-
-          </p>
-          <p>
-          <label>Condition</label>
-          <input type="number" id="T268_1" name="kVp" value="" />
-
-          </p>
-
-      </div>
+<div class="row">
+<table class="table table-borderless"  style="margin-top: 20px;margin-left: 250px;margin-right: 0px; max-width: 700px; ">
+<tbody  >
+  <tr>
+    <th>Case ID:</th>
+  
+    <th>Next visit:</th>
+  </tr>
+  <tr >
+    <th scope="row">Technical parameters</th>
+  </tr>
+  <tr>
+    <td>kVp:</td>
+  </tr>
+  <tr>
+    <td>mA:</td>
+  <tr>
+    <td>DLP:</td>
+  </tr>
+</tr>
+  <tr>
+    <th scope="row">Clinical information</th>
+  </tr>
+  <tr>
+     <td>Diagnostic Quality:</td>
+  </tr>
+  <tr>
+     <td>See physician:</td>
+  </tr>
+  <tr>
+     <td>Comments:</td>
+  </tr>
+  
+  
+</tbody>
+</table>
 </div>
-</section>
+<div class="row">
+<div class="col">
+<table class="table table-borderless"  style="margin-top: 20px;margin-left: 230px;margin-right: 200px; max-width: 700px; ">
+<tbody  >
+  <tr>
+    <th scope="row">Lung Nodules</th>
+  </tr>
+  <tr>
+    <th scope="row">Nodule #1</th>
+  </tr>
+  <tr>
+    <td>Position:</td>
+  </tr>
+  <tr>
+    <td>State:</td>
+  </tr>
+  <tr>
+    <td>Size:</td>
+  </tr>
+  <tr>
+    <td>Slice index:</td>
+  </tr>
+  <tr>
+    <td>Score:</td>
+  </tr>
+  <tr>
+    <td>Diameter:</td>
+  </tr>
+  <tr>
+    <td>Probability:</td>
+  </tr>
+  <tr>
+    <td>Concerning:</td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+  </tr>
+</tbody>
+</table>
 
-<hr>
-<section data-section-name="Impression">
-<header class="level1" style="margin-top: 20px;"><h4>Impression</h4></header>
-<p style="margin-top: 20px;"> 
-<label>Need comparison:</label>
-<input type="text" id="T268_139" name="Need comparison" value="No" />
-</p>
-<p>
-<label>Repeat CT:</label>
-<select id="T268_140" name="Repeat CT">
-<option id="T268_141" name="12 months" value="12 months">12 months from screening exam</option>
-<option id="T268_142" name="3 months" value="3 months">3 months from screening exam</option>
-<option id="T268_143" name="6 months" value="6 months">6 months from screening exam</option>
-<option id="T268_144" name="3 to 6 months" value="3 to 6 months">3 to 6 months from screening exam</option>
-<option id="T268_145" name="24 months" value="24 months">24 months from screening exam</option>
-</select>
-</p>
-<p>
-<label>See physician:</label>
-<select id="T268_146" name="See physician">
-<option id="T268_147" name="No" value="No">No</option>
-<option id="T268_148" name="cancer" value="cancer">YES. Suspect cancer.</option>
-<option id="T268_149" name="non-malignant" value="non-malignant">YES, non-malignant finding. </option>
-</select>
-</p>
-<p>
-<label>Comments:</label>
-<textarea id="T268_14" name="Comments" value="" ></textarea>
-</p>
-</section>
+</div>
 
-<hr>
-<br><br><br>
+
+<div class="col">
+<img style="margin-top: 80px; margin-left: 0px;" src="data:image/png;base64,{{ img }}" height="300" width="300"/>
+</div>
+</div>
+
 </div>
 </body>
 </html>

@@ -7,12 +7,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </head>
-<body style= "background-color: rgb(242,242,242);">
+<body style= "">
 
 <!-- RGB values: dark green: rgb(21,87,36); light green: rgb(195,230,203); green : rgb(40,167,69); -->
 
 
-<nav class="navbar navbar-dark navbar-expand-lg" style="background-color: rgb(21,87,36); height: 60px;">
+<nav class="navbar navbar-dark navbar-expand-lg" style="background-color: rgb(0, 184, 230); height: 60px;">
   <a class="navbar-brand" href="#" style="margin-left: 40px;">Persistent Project</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -46,15 +46,15 @@
 
   <div class="col-3" style="text-align : center;">
 
-      <div class="list-group list-group-flush" id="myListImg" role="tablist" style="display: inline-block; border-color: green; margin-top: 130px; margin-bottom: 20px; width:260px; margin-left: 40px;">
-              <li class="list-group-item list-group-item-action " style="background-color: rgb(21,87,36); color: white;" >Available Nodules</li>
+      <div class="list-group " id="myListImg" role="tablist" style="display: inline-block;  margin-top: 130px; border-color: rgb(0, 184, 230);margin-bottom: 20px; width:260px; margin-left: 40px;">
+              <li class="list-group-item list-group-item-action " style="border-color: rgb(0, 184, 230)" >Available Nodules</li>
               {% for nodule in nodules %}
-              <a class="list-group-item list-group-item-action list-group-item-success" href="/portal/{{case_id}}/{{ nodule.0 }}/" >Nodule {{ nodule.0|add:'1' }}</a>
+              <a class="list-group-item list-group-item-action " href="/portal/{{case_id}}/{{ nodule.0 }}/" style="border-color: rgb(0, 184, 230)">Nodule {{ nodule.0|add:'1' }}</a>
               {% endfor %}
               
       </div>  
     <br>
-        <button type="button" class="btn btn-outline-success" style="margin-left: 40px;" onclick="window.location.href='/admin/app/nodule/add/' ">Add a Nodule</button>
+        <button type="button" class="btn btn-light" style="margin-left: 40px; border-color: rgb(0, 184, 230)" onclick="window.location.href='/admin/app/nodule/add/' ">Add a Nodule</button>
 
   </div>
 
@@ -64,9 +64,9 @@ display: inline-block;">
   <div class="row">
       <div class="list-group list-group-horizontal align-items-center" id="myList" role="tablist" style="margin-bottom: 20px;" >
         
-            <button class="btn btn-outline-success" style="margin-top: 40px; margin-left: 150px ;margin-right: 40px;" data-toggle="list" href="#detect" role="tab">Detect</button>
+            <button class="btn btn-light" style="border-color: rgb(0, 184, 230);margin-top: 40px; margin-left: 150px ;margin-right: 40px;" data-toggle="list" href="#detect" role="tab">Detect</button>
          
-            <button class="btn btn-outline-success" style="margin-top: 40px; margin-right: 0px;" data-toggle="list" href="#annotate" role="tab">Annotate</button>
+            <button class="btn btn-light" style="border-color: rgb(0, 184, 230);margin-top: 40px; margin-right: 0px;" data-toggle="list" href="#annotate" role="tab">Annotate</button>
           
       </div>
       
@@ -82,33 +82,33 @@ display: inline-block;">
 
     <div class="col" >
       <img style="margin-top: 20px; margin-left: 0px;" src="data:image/png;base64,{{ img }}" height="500" width="500"/>
-      <div class="card" style= "background-color: rgb(195,230,203); margin-top: 20px; margin-bottom: 60px;">
-        <div class="card-header" style="background-color: rgb(21,87,36); color: white;" >Explanation
+      <div class="card" style= "border-color: rgb(0, 184, 230);margin-top: 20px; margin-bottom: 60px;">
+        <div class="card-header" style="border-color: rgb(0, 184, 230); " >Explanation
       </div>
-      <div class="card-body" style="text-align: justify; "><p>{{ explanation }}</p></div>
+      <div class="card-body" style="border-color: rgb(0, 184, 230);text-align: justify; "><p>{{ explanation }}</p></div>
       </div>
 
       
     </div>
     <div class="col">
-            <table class="table table-bordered" style="border-color: rgb(21,87,36); margin-top: 20px; margin-right: 0px; width: 340px; text-align: center;">
+            <table class="table table-bordered" style="border-color: rgb(0, 184, 230); margin-top: 20px; margin-right: 0px; width: 340px; text-align: center;">
                         <tbody  >
                         <tr >
-                          <td scope="row" style=" border-color: rgb(21,87,36); background-color: rgb(195,230,203);">Centroid</td>
-                          <td style="border-color: rgb(21,87,36);">X: {{ info.x }}</td>
-                          <td style="border-color: rgb(21,87,36);">Y: {{ info.y }}</td>
+                          <td scope="row" style=" border-color: rgb(0, 184, 230); ">Centroid</td>
+                          <td style="border-color: rgb(0, 184, 230);">X: {{ info.x }}</td>
+                          <td style="border-color: rgb(0, 184, 230);">Y: {{ info.y }}</td>
                         </tr>
                         <tr >
-                          <td scope="row" style="border-color: rgb(21,87,36);background-color: rgb(195,230,203);">Slice Index</td>
-                          <td colspan="2" style="border-color: rgb(21,87,36);"> {{ info.z }}</td>
+                          <td scope="row" style="border-color: rgb(0, 184, 230);">Slice Index</td>
+                          <td colspan="2" style="border-color: rgb(0, 184, 230);"> {{ info.z }}</td>
                         </tr>
                         <tr >
-                          <td scope="row" style=" border-color: rgb(21,87,36);background-color: rgb(195,230,203);">Probability</td>
-                          <td colspan="2" style="border-color: rgb(21,87,36);">{{ probability }}</td>
+                          <td scope="row" style=" border-color: rgb(0, 184, 230);">Probability</td>
+                          <td colspan="2" style="border-color: rgb(0, 184, 230);">{{ probability }}</td>
                         </tr>
                         <tr >
-                          <td scope="row" style="border-color: rgb(21,87,36); background-color: rgb(195,230,203);">Malignancy score</td>
-                          <td colspan="2" style="border-color: rgb(21,87,36);">{{ info.score }}</td>
+                          <td scope="row" style="border-color: rgb(0, 184, 230);">Malignancy score</td>
+                          <td colspan="2" style="border-color: rgb(0, 184, 230);">{{ info.score }}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -116,7 +116,7 @@ display: inline-block;">
                       {% csrf_token %}
                     <div class="row" style="margin-bottom: 20px;text-align: center; ">
                                           <div class="col">
-                                                <input type="submit" value="Mark Concerning" class="btn btn-outline-success" name="mc"/>
+                                                <input type="submit" value="Mark Concerning" class="btn btn-light" style="border-color: rgb(0, 184, 230)" name="mc"/>
                                           </div>
                                           <div class="col" >
                                                 <input type="submit" value="Dismiss" class="btn btn-outline-danger" name="ds"/>
@@ -138,13 +138,13 @@ display: inline-block;">
             <div class="row" style="">
 
             <div class="col" >
-                <img style="margin-top: 20px;" src="data:image/png;base64,{{ img }}" height="500" width="500"/>
+                <img style="margin-top: 20px;margin-bottom: 40px;" src="data:image/png;base64,{{ img }}" height="500" width="500"/>
 
             </div>
 
             <div class="col">
 
-              <div class="card" style="margin-top: 20px; margin-left:0px; margin-right: 0px;background-color: rgb(242,242,242); width: 340px;" >
+              <div class="card" style="margin-top: 20px; margin-left:0px; margin-right: 0px; width: 340px;" >
               <div class="card-body">
                     <form method = "POST">
                       {% csrf_token %}
@@ -211,10 +211,10 @@ display: inline-block;">
 
                       <div class="form-group" >
                         <label>Notes</label>
-                        <textarea name="notes" class="form-control" style="background-color: rgb(242,242,242);">{{ info.notes }}</textarea>
+                        <textarea name="notes" class="form-control" style="">{{ info.notes }}</textarea>
                       </div>
 
-                      <button type="submit" class="btn btn-outline-success">Submit</button>
+                      <button type="submit" class="btn btn-light" style="border-color: rgb(0, 184, 230)">Submit</button>
                     </form>
 
 

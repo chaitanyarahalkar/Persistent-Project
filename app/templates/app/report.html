@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta content="CT lung cancer screening" name="dcterms.title"/>
+<meta content="CT lung cancer screening report template" name="dcterms.description"/>
+<meta content="http://www.radreport.org/template/0000268" name="dcterms.identifier"/>
+<meta content="en" name="dcterms.language"/>
+<meta content="IMAGE_REPORT_TEMPLATE" name="dcterms.type"/>
+<meta content="Radiological Society of North America (RSNA)" name="dcterms.publisher"/>
+<meta content="May be used gratis, subject to license agreement" name="dcterms.rights"/>
+<meta content="http://www.radreport.org/license.pdf" name="dcterms.license"/>
+<meta content="2014-01-05" name="dcterms.date"/>
+<meta content="Tolat P, Kahn CE Jr" name="dcterms.creator"/>
+
+<meta content="Kahn CE Jr [editor]" name="dcterms.contributor"/>
+<meta content="Medical College of Wisconsin (MCW)" name="dcterms.contributor"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/xml">
+<!--
+<template_attributes>
+<top-level-flag>true</top-level-flag>
+<status>ACTIVE</status>
+<coding_schemes>
+ <coding_scheme name="RadLex" designator="2.16.840.1.113883.6.256" />
+ <coding_scheme name="SNOMEDCT" designator="2.16.840.1.113883.6.96" />
+ <coding_scheme name="LOINC" designator="2.16.840.1.113883.6.1" />
+</coding_schemes>
+<coded_content>
+</coded_content>
+</template_attributes>
+-->
+</script>
+</head>
+<body style= "background-color: rgb(242,242,242);">
+
+<!-- RGB values: dark green: rgb(21,87,36); light green: rgb(195,230,203); green : rgb(40,167,69); -->
+
+
+<nav class="navbar navbar-dark navbar-expand-lg" style="background-color: rgb(21,87,36); height: 60px;">
+  <a class="navbar-brand" href="#" style="margin-left: 40px;">Persistent Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" >
+      <li class="nav-item" style="margin-left: 450px;">
+        <a class="nav-link" href="#" style="width: 100px;">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/open" style="width: 150px;">Open Image</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="width: 150px;">Import Image</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" style="width: 150px;">Report and Export</a>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+
+
+
+<div class="container-fluid">
+<h2  style="margin-top:40px;margin-bottom: 20px; text-align: center;">RSNA Standard Template</h2>
+<hr>
+<section data-section-name="Procedure">
+
+<section data-section-name="Technical parameters" style="text-align: center;">
+<header class="level2" ><h4>Technical parameters</h4></header>
+
+<p style="margin-top: 20px;">
+<label>kVp:</label>
+<input type="number" id="T268_1" name="kVp" value="" />
+</p>
+<p>
+<label>mA:</label>
+<input type="number" id="T268_2" name="mA" value="" />
+</p>
+<p>
+<label>DLP: </label>
+<input type="number" id="T268_3" name="DLP" value="" />
+</p>
+
+</section>
+</section>
+<hr>
+
+<section data-section-name="Clinical information" style="text-align: center;">
+<header class="level1"><h4>Clinical information</h4></header>
+<p style="margin-top: 20px;">
+<label>Screening visit: </label>
+<select id="T268_4" name="Screening visit">
+<option id="T268_5" name="Baseline" value="Baseline">Baseline</option>
+<option id="T268_6" name="Year 1" value="Year 1">Year 1</option>
+<option id="T268_7" name="Year 2" value="Year 2">Year 2</option>
+</select>
+</p>
+<p>
+<textarea id="T268_8" name="Clinical information">Lung cancer screening. </textarea>
+</p>
+</section>
+
+<hr>
+<section data-section-name="Findings" style="text-align: center;">
+<header class="level1"><h4>Findings</h4></header>
+<section data-section-name="Exam parameters">
+<header class="level2" style="margin-top: 20px;"><h5>Exam parameters</h5></header>
+
+
+<p style="margin-top: 20px;">
+<label>Diagnostic quality:</label>
+<select id="T268_10" name="Diagnostic quality">
+<option id="T268_11" name="Good" value="Good">Satisfactory</option>
+<option id="T268_12" name="Limited" value="Limited">Limited, but interpretable</option>
+<option id="T268_13" name="Non-diagnostic" value="Non-diagnostic">Non-diagnostic</option>
+</select>
+</p>
+
+<p>
+<label>Comments:</label>
+<textarea id="T268_14" name="Comments" value="" ></textarea>
+</p>
+</section>
+
+<section data-section-name="Lung nodules">
+<header class="level2" style="margin-top: 20px;"> <h5>Lung nodules</h5></header>
+
+
+<div class="card" style="margin-top: 20px;max-width: 400px;text-align: center; margin-left: 400px;" >
+
+      <div class="card-header" id="headingOne" >
+        <h5> Nodule #1 </h5>
+      </div>
+      <div class="card-body">
+      <p>
+          <label>Position</label>
+          <input type="number" id="T268_1" name="kVp" value="" />
+
+          </p>
+          <p>
+          <label>Size</label>
+          <input type="number" id="T268_1" name="kVp" value="" />
+
+          </p>
+          <p>
+          <label>Density</label>
+          <input type="number" id="T268_1" name="kVp" value="" />
+
+          </p>
+          <p>
+          <label>Condition</label>
+          <input type="number" id="T268_1" name="kVp" value="" />
+
+          </p>
+
+      </div>
+</div>
+</section>
+
+<hr>
+<section data-section-name="Impression">
+<header class="level1" style="margin-top: 20px;"><h4>Impression</h4></header>
+<p style="margin-top: 20px;"> 
+<label>Need comparison:</label>
+<input type="text" id="T268_139" name="Need comparison" value="No" />
+</p>
+<p>
+<label>Repeat CT:</label>
+<select id="T268_140" name="Repeat CT">
+<option id="T268_141" name="12 months" value="12 months">12 months from screening exam</option>
+<option id="T268_142" name="3 months" value="3 months">3 months from screening exam</option>
+<option id="T268_143" name="6 months" value="6 months">6 months from screening exam</option>
+<option id="T268_144" name="3 to 6 months" value="3 to 6 months">3 to 6 months from screening exam</option>
+<option id="T268_145" name="24 months" value="24 months">24 months from screening exam</option>
+</select>
+</p>
+<p>
+<label>See physician:</label>
+<select id="T268_146" name="See physician">
+<option id="T268_147" name="No" value="No">No</option>
+<option id="T268_148" name="cancer" value="cancer">YES. Suspect cancer.</option>
+<option id="T268_149" name="non-malignant" value="non-malignant">YES, non-malignant finding. </option>
+</select>
+</p>
+<p>
+<label>Comments:</label>
+<textarea id="T268_14" name="Comments" value="" ></textarea>
+</p>
+</section>
+
+<hr>
+<br><br><br>
+</div>
+</body>
+</html>

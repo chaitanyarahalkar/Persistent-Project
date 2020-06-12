@@ -11,6 +11,31 @@
 <body>
 
 
+<nav class="navbar navbar-dark navbar-expand-lg" style="background-color: rgb(0, 184, 230); height: 60px;">
+  <a class="navbar-brand" href="#" style="margin-left: 40px;">Persistent Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" >
+      <li class="nav-item" style="margin-left: 450px;">
+        <a class="nav-link" href="#" style="width: 100px;">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/open" style="width: 150px;">Open Image</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin" style="width: 150px;">Administration</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="width: 150px;">Report and Export</a>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+
 <div class="container-fluid" style="text-align: center; margin-top: 70px">
  <br>
   <h1 class="display-4">Lung Cancer Diagnosis System </h1>
@@ -22,7 +47,7 @@
     <option value="{{ case }}">{{ case }}</option>
   </select>
   {% endfor %}
-  <input type="submit" class="btn btn-outline-success">Open Case</input><br><br>
+  <input type="submit" class="btn btn-light" style="border-color: rgb(0, 184, 230);">Open Case</input><br><br>
   </form>
   <hr>
 </div>

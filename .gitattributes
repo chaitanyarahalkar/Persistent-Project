@@ -1,0 +1,4 @@
+*.npy filter=lfs diff=lfs merge=lfs -text
+CT/*.npy filter=lfs diff=lfs merge=lfs -text
+detection/*.npy filter=lfs diff=lfs merge=lfs -text
+Uploads/*/*.png filter=lfs diff=lfs merge=lfs -text

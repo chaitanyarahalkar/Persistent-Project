@@ -129,6 +129,3 @@ dmypy.json
 .pyre/
 
 # Dev files
-Uploads/
-CT/
-detection/

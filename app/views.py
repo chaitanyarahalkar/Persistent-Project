@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from app.models import Nodule, Case
 import base64
 import urllib
@@ -12,6 +12,7 @@ import lime.lime_tabular
 from sklearn.model_selection import train_test_split
 import xgboost
 import dill as pickle
+import pylidc as pl
 
 # showid = 3 # from 0 to 4
 
@@ -36,6 +37,8 @@ explainer = lime.lime_tabular.LimeTabularExplainer(train, feature_names=feature_
 
 # Create your views here.
 
+def index(request):
+	return render(request,'app/index.html')
 
 def iou(box0, box1):
 	r0 = box0[3] / 2
@@ -203,8 +206,14 @@ def process(request):
 	return HttpResponse('Get not allowed!')
 
 			
-
+def visualize_in_2d(request,case_id,index):
+	os.system("python3 run_2d.py {}".format(index))
+	return redirect(f'/portal/{case_id}/0/')
 	
+
+def visualize_in_3d(request,case_id,index):
+	os.system("python3 run_3d.py {}".format(index))
+	return redirect(f'/portal/{case_id}/0/')
 
 
 
